@@ -5,9 +5,10 @@ const MarioChar = require('../models/mariochar');
 //Describe tests
 describe("Finding records", function(){
 
+    var char;
     //Run this before each test in this block
     beforeEach(function(done){
-         var char = new MarioChar({
+          char = new MarioChar({
             name:"Mario"
         });
 
@@ -32,4 +33,18 @@ describe("Finding records", function(){
 
 
     });
+
+
+     it("Finds one record by ID from the database", function(done){
+        
+        //monoose will create an id for the record we are inserting
+       MarioChar.findOne({_id: char._id}).then(function(result){
+           //result will have the record returned
+           assert(result._id.toString() === char._id.toString());
+           done();
+       });
+
+       
+    });
+    
 });
