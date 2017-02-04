@@ -13,9 +13,6 @@ describe("Finding records", function(){
         });
 
         char.save().then(function(){
-            //isNew is true when we saved the object locally, but not
-            //saved to the database. isNew becomes false once saved to the database
-            assert(char.isNew === false);
             done(); //Tell mocha our test is done and move onto the next test
         });
     });
